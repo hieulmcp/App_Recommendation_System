@@ -17,7 +17,7 @@ link_Recomender_Collborative = link_source + '1QSuaLQ8OInj3LAHl3aHMvNqrLwjZYHNL'
 
 #--------------
 # Gonfig GUI
-st.set_page_config(page_title='Product Recommendation', layout = 'wide', initial_sidebar_state = "expanded",page_icon="📝")
+st.set_page_config(page_title='Product Recommendation', layout = 'wide', initial_sidebar_state = "expanded")
 
 # Load data
 @st.cache
@@ -75,9 +75,9 @@ if choice == "Đế xuất dựa trên nội dung":
     st.sidebar.markdown("<h3 style='text-align: center; color: Yellow;'>Chọn thông tin cần thiết</h3>", unsafe_allow_html=True)
     name_item = st.sidebar.selectbox('Tên sản phẩm', products['name'])
     #items_num = st.sidebar.slider(label='Số lượng sản phẩm đề xuất:',min_value=2,max_value=8,value=8,step=2)
-    lst_type = [6,7,8,9,10,11,12]
+    lst_type = [4,5,6,7,8]
     items_num = st.sidebar.selectbox('Số sản phẩm đề xuất', (lst_type))
-    submit_button = st.sidebar.button(label='Đề xuất sản phẩm 📝')
+    submit_button = st.sidebar.button(label='Summit')
     if submit_button:
         results = {}
         for idx, row in data_xl.iterrows():
@@ -141,10 +141,10 @@ elif choice == "Đề xuất dựa trên sản phẩm":
     recommenders = load_recomenders_collborative()
     with st.form(key='Đề xuất sản phẩm cho người dùng'):
         selected_user = st.sidebar.multiselect('Chọn người dùng', custIdsDefault ,[10600682])
-        lst_type = [6,7,8,9,10,11,12]
+        lst_type = [4,5,6,7,8]
         items_num = st.sidebar.selectbox('Số sản phẩm bạn muốn đế xuất:', (lst_type))
         #items_num = st.sidebar.slider(label='Số lượng sản phẩm đề xuất:',min_value=1,max_value=10,value=6,step=1)
-        submit_button = st.sidebar.button(label='Chọn tôi đi 📝')
+        submit_button = st.sidebar.button(label='Summit')
     if submit_button:
         if len(selected_user) ==0:
             st.sidebar.markdown("<h1 style='text-align: center; color: yellow;'>Chọn userid đi nào ?</h1>", unsafe_allow_html=True)
